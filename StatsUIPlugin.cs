@@ -59,5 +59,14 @@ namespace StatsUIPlugin
                 __result = SPManager.GetTranslatedName(__result);
             }
         }
+
+        [HarmonyPatch(typeof(PlayerAvatar), "Start")]
+        static class HookPlayerAvatarStart
+        {
+            static void Postfix()
+            {
+                SPManager.PlayerAvatarStart();
+            }
+        }
     }
 }

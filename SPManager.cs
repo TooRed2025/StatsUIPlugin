@@ -137,7 +137,6 @@ namespace StatsUIPlugin
                 var headerText = _header?.GetValue(instance) as TextMeshProUGUI;
                 if (headerText?.enabled == false)
                 {
-                    _lastUpgHash = 0;
                     return;
                 }
 
@@ -200,6 +199,12 @@ namespace StatsUIPlugin
             }
             _failedTrans.Add(key);
             StatsUIPlugin.Log.LogWarning($"翻译失败 [{key}]：无对应中文，请清除其它翻译模组或联系汉化作者TooRed求助，QQ群：1050816144");
+        }
+
+        internal static void PlayerAvatarStart()
+        {
+            _lastUpgHash = 0;
+            StatsUIPlugin.LogDebug($"重置状态栏缓存");
         }
     }
 }
