@@ -37,7 +37,7 @@ namespace StatsUIPlugin
             [HarmonyPostfix]
             private static void Postfix(StatsUI __instance)
             {
-                SPManager.ProcessStatsUI((StatsUI)__instance);
+                SPManager.ProcessStatsUI(__instance);
             }
         }
 
