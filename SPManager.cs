@@ -2,6 +2,7 @@ using HarmonyLib;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -13,6 +14,8 @@ namespace StatsUIPlugin
 {
     internal class SPManager
     {
+        private static readonly HashSet<string> _failedTranslations = new HashSet<string>();
+        private static readonly string _bugFilePath = Path.Combine(BepInEx.Paths.ConfigPath, "Translation", "zh", "Bug.txt");
         private static FieldInfo _playerUpgradesField;
         private static FieldInfo _textField;
         private static FieldInfo _numbersTextField;
@@ -22,7 +25,7 @@ namespace StatsUIPlugin
         private static bool _hasModdedUpgrades = false;
         private static int _lastUpgradeHash;
 
-        public static void InitReflectionCache()
+        internal static void InitReflectionCache()
         {
             _playerUpgradesField = AccessTools.Field(typeof(StatsUI), "playerUpgrades");
             _textField = AccessTools.Field(typeof(StatsUI), "Text");
@@ -46,7 +49,7 @@ namespace StatsUIPlugin
                 if (upgradesType == null)
                 {
                     _hasModdedUpgrades = false;
-                    SPUtils.LogDebug($"未检测到 REPOLib中的模组升级项");
+                    StatsUIPlugin.LogDebug($"未检测到 REPOLib中的模组升级项");
                     return;
                 }
 
@@ -56,7 +59,7 @@ namespace StatsUIPlugin
                     if (assembly.FullName.Contains("GoopUpgrades"))
                     {
                         _hasModdedUpgrades = true;
-                        SPUtils.LogDebug($"检测到 GoopUpgrades 升级项");
+                        StatsUIPlugin.LogDebug($"检测到 GoopUpgrades 升级项");
                         return;
                     }
                 }
@@ -74,7 +77,7 @@ namespace StatsUIPlugin
                 if (playerUpgrades is System.Collections.IDictionary dict)
                 {
                     _hasModdedUpgrades = dict.Count > 0;
-                    SPUtils.LogDebug($"检测到 {dict.Count} 个模组升级项");
+                    StatsUIPlugin.LogDebug($"检测到 {dict.Count} 个模组升级项");
                 }
             }
             catch (Exception ex)
@@ -84,7 +87,7 @@ namespace StatsUIPlugin
             }
         }
 
-        public static string GetTranslatedName(string displayName)
+        internal static string GetTranslatedName(string displayName)
         {
             if (!_hasModdedUpgrades)
             {
@@ -113,7 +116,7 @@ namespace StatsUIPlugin
                 if (AutoTranslator.Default.TryTranslate(key, out var translated))
                 {
                     _translationCache[key] = translated;
-                    SPUtils.LogDebug($"翻译：{key} → {translated}");
+                    StatsUIPlugin.LogDebug($"翻译：{key} → {translated}");
                     return translated;
                 }
             }
@@ -123,11 +126,11 @@ namespace StatsUIPlugin
             }
 
             _translationCache[key] = displayName;
-            SPUtils.LogTranslationFailed(key);
+            LogTranslationFailed(key);
             return displayName;
         }
 
-        public static void ProcessStatsUI(StatsUI instance)
+        internal static void ProcessStatsUI(StatsUI instance)
         {
             try
             {
@@ -153,7 +156,7 @@ namespace StatsUIPlugin
                 if (isChanged)
                 {
                     UpdateFontSize(Text, numbersText, headerText, upgrades?.Count ?? 0);
-                    SPUtils.LogDebug($"字体大小更改");
+                    StatsUIPlugin.LogDebug($"字体大小更改");
 
                     _sb.Clear();
                     foreach (var playerUpgrade in upgrades)
@@ -165,7 +168,7 @@ namespace StatsUIPlugin
                               .Append("</color></b>\n");
                         }
                     }
-                    SPUtils.LogDebug($"数字拼接");
+                    StatsUIPlugin.LogDebug($"数字拼接");
                     _lastUpgradeHash = upgradeHash;
                 }
 
@@ -184,6 +187,22 @@ namespace StatsUIPlugin
             Text.fontSize = newFontSize;
             numbersText.fontSize = newFontSize + SPConfig.NumFontPer.Value;
             if (headerText?.enabled ?? false) headerText.fontSize = newFontSize + SPConfig.HeaderFontOffset.Value;
+        }
+
+        internal static void LogTranslationFailed(string key)
+        {
+            if (_failedTranslations.Contains(key)) return;
+            try
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(_bugFilePath));
+                File.AppendAllText(_bugFilePath, $"{key}={key}\n", System.Text.Encoding.UTF8);
+            }
+            catch (Exception ex)
+            {
+                StatsUIPlugin.Log.LogError($"写入Bug.txt失败：{ex.Message}");
+            }
+            _failedTranslations.Add(key);
+            StatsUIPlugin.Log.LogWarning($"翻译失败 [{key}]：无对应中文，请清除其它翻译模组或联系汉化作者TooRed求助，QQ群：1050816144");
         }
     }
 }

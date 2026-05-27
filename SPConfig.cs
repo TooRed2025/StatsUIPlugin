@@ -16,7 +16,7 @@ namespace StatsUIPlugin
 
         public static bool ConfigChanged { get; private set; } = true;
 
-        public static void Init(ConfigFile config)
+        internal static void Init(ConfigFile config)
         {
             var sec = "Font Settings";
             EnableTranslation = config.Bind(sec, "状态栏翻译功能", true, new ConfigDescription("启用翻译功能", new AcceptableValueList<bool>(true, false)));
@@ -37,7 +37,7 @@ namespace StatsUIPlugin
             FontMode.SettingChanged += (_, __) => ConfigChanged = true;
         }
 
-        public static bool IsConfigChanged()
+        internal static bool IsConfigChanged()
         {
             bool changed = ConfigChanged;
             ConfigChanged = false;

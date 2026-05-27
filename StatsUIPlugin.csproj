@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="SPConfig.cs" />
     <Compile Include="SPManager.cs" />
-    <Compile Include="SPUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatsUIPlugin.cs" />
   </ItemGroup>

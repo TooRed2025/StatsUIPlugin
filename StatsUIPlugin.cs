@@ -1,6 +1,7 @@
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using System;
 using XUnity.AutoTranslator.Plugin.Core;
 
 namespace StatsUIPlugin
@@ -30,21 +31,27 @@ namespace StatsUIPlugin
             _harmony.PatchAll();
             Log.LogInfo("加载成功！");
         }
+        internal static void LogDebug(FormattableString message)
+        {
+            if (SPConfig.DebugMode.Value)
+            {
+                Log.LogDebug(message.ToString());
+                Log.LogInfo(message.ToString());
+            }
+        }
 
         [HarmonyPatch(typeof(StatsUI), "Fetch")]
-        private static class StatsUIFetchPatch
+        static class StatsUIFetchPatch
         {
-            [HarmonyPostfix]
-            private static void Postfix(StatsUI __instance)
+            static void Postfix(StatsUI __instance)
             {
                 SPManager.ProcessStatsUI(__instance);
             }
         }
 
         [HarmonyPatch(typeof(StatsUI), "GetUpgradeDisplayName")]
-        private static class GetUpgradeDisplayNamePatch
+        static class GetUpgradeDisplayNamePatch
         {
-            [HarmonyPostfix]
             static void Postfix(ref string __result)
             {
                 __result = SPManager.GetTranslatedName(__result);
