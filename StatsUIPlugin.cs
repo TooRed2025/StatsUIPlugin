@@ -26,7 +26,7 @@ namespace StatsUIPlugin
                 return;
             }
 
-            SPManager.InitReflectionCache();
+            SPManager.DetectModdedUpgrades();
 
             _harmony.PatchAll();
             Log.LogInfo("加载成功！");

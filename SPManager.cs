@@ -14,41 +14,31 @@ namespace StatsUIPlugin
 {
     internal class SPManager
     {
-        private static readonly HashSet<string> _failedTranslations = new HashSet<string>();
+        private static readonly FieldInfo _playerUpgrades = AccessTools.Field(typeof(StatsUI), "playerUpgrades");
+        private static readonly FieldInfo _text = AccessTools.Field(typeof(StatsUI), "Text");
+        private static readonly FieldInfo _numbersText = AccessTools.Field(typeof(StatsUI), "textNumbers");
+        private static readonly FieldInfo _header = AccessTools.Field(typeof(StatsUI), "upgradesHeader");
+        private static readonly HashSet<string> _failedTrans = new HashSet<string>();
         private static readonly string _bugFilePath = Path.Combine(BepInEx.Paths.ConfigPath, "Translation", "zh", "Bug.txt");
-        private static FieldInfo _playerUpgradesField;
-        private static FieldInfo _textField;
-        private static FieldInfo _numbersTextField;
-        private static FieldInfo _headerField;
         private static readonly StringBuilder _sb = new StringBuilder(512);
-        private static readonly ConcurrentDictionary<string, string> _translationCache = new ConcurrentDictionary<string, string>();
-        private static bool _hasModdedUpgrades = false;
-        private static int _lastUpgradeHash;
+        private static readonly ConcurrentDictionary<string, string> _transCache = new ConcurrentDictionary<string, string>();
+        private static bool _hasModUpg = false;
+        private static int _lastUpgHash;
 
-        internal static void InitReflectionCache()
-        {
-            _playerUpgradesField = AccessTools.Field(typeof(StatsUI), "playerUpgrades");
-            _textField = AccessTools.Field(typeof(StatsUI), "Text");
-            _numbersTextField = AccessTools.Field(typeof(StatsUI), "textNumbers");
-            _headerField = AccessTools.Field(typeof(StatsUI), "upgradesHeader");
-
-            DetectModdedUpgrades();
-        }
-
-        private static void DetectModdedUpgrades()
+        internal static void DetectModdedUpgrades()
         {
             try
             {
                 if (!SPConfig.AutoCheck.Value)
                 {
-                    _hasModdedUpgrades = true;
+                    _hasModUpg = true;
                     return;
                 }
 
                 Type upgradesType = AccessTools.TypeByName("REPOLib.Modules.Upgrades");
                 if (upgradesType == null)
                 {
-                    _hasModdedUpgrades = false;
+                    _hasModUpg = false;
                     StatsUIPlugin.LogDebug($"未检测到 REPOLib中的模组升级项");
                     return;
                 }
@@ -58,7 +48,7 @@ namespace StatsUIPlugin
                 {
                     if (assembly.FullName.Contains("GoopUpgrades"))
                     {
-                        _hasModdedUpgrades = true;
+                        _hasModUpg = true;
                         StatsUIPlugin.LogDebug($"检测到 GoopUpgrades 升级项");
                         return;
                     }
@@ -69,27 +59,27 @@ namespace StatsUIPlugin
                 
                 if (playerUpgradesField == null)
                 {
-                    _hasModdedUpgrades = false;
+                    _hasModUpg = false;
                     return;
                 }
 
                 object playerUpgrades = playerUpgradesField.GetValue(null);
                 if (playerUpgrades is System.Collections.IDictionary dict)
                 {
-                    _hasModdedUpgrades = dict.Count > 0;
+                    _hasModUpg = dict.Count > 0;
                     StatsUIPlugin.LogDebug($"检测到 {dict.Count} 个模组升级项");
                 }
             }
             catch (Exception ex)
             {
-                _hasModdedUpgrades = false;
+                _hasModUpg = false;
                 StatsUIPlugin.Log.LogError($"REPOLib 检测失败：{ex.Message}");
             }
         }
 
         internal static string GetTranslatedName(string displayName)
         {
-            if (!_hasModdedUpgrades)
+            if (!_hasModUpg)
             {
                 return displayName;
             }
@@ -106,7 +96,7 @@ namespace StatsUIPlugin
 
             string key = displayName.ToUpper();
 
-            if (_translationCache.TryGetValue(key, out var cached))
+            if (_transCache.TryGetValue(key, out var cached))
             {
                 return cached;
             }
@@ -115,7 +105,7 @@ namespace StatsUIPlugin
             {
                 if (AutoTranslator.Default.TryTranslate(key, out var translated))
                 {
-                    _translationCache[key] = translated;
+                    _transCache[key] = translated;
                     StatsUIPlugin.LogDebug($"翻译：{key} → {translated}");
                     return translated;
                 }
@@ -125,7 +115,7 @@ namespace StatsUIPlugin
                 StatsUIPlugin.Log.LogError($"翻译失败：{ex.Message}");
             }
 
-            _translationCache[key] = displayName;
+            _transCache[key] = displayName;
             LogTranslationFailed(key);
             return displayName;
         }
@@ -139,19 +129,19 @@ namespace StatsUIPlugin
                     return;
                 }
 
-                var headerText = _headerField?.GetValue(instance) as TextMeshProUGUI;
+                var headerText = _header?.GetValue(instance) as TextMeshProUGUI;
                 if (headerText?.enabled == false)
                 {
-                    _lastUpgradeHash = 0;
+                    _lastUpgHash = 0;
                     return;
                 }
 
-                var Text = _textField?.GetValue(instance) as TextMeshProUGUI;
-                var numbersText = _numbersTextField?.GetValue(instance) as TextMeshProUGUI;
+                var Text = _text?.GetValue(instance) as TextMeshProUGUI;
+                var numbersText = _numbersText?.GetValue(instance) as TextMeshProUGUI;
 
-                var upgrades = _playerUpgradesField?.GetValue(instance) as Dictionary<string, int>;
+                var upgrades = _playerUpgrades?.GetValue(instance) as Dictionary<string, int>;
                 int upgradeHash = (upgrades == null || upgrades.Count == 0) ? 0 : upgrades.Values.Sum();
-                bool isChanged = upgradeHash != _lastUpgradeHash || SPConfig.IsConfigChanged();
+                bool isChanged = upgradeHash != _lastUpgHash || SPConfig.IsConfigChanged();
 
                 if (isChanged)
                 {
@@ -169,7 +159,7 @@ namespace StatsUIPlugin
                         }
                     }
                     StatsUIPlugin.LogDebug($"数字拼接");
-                    _lastUpgradeHash = upgradeHash;
+                    _lastUpgHash = upgradeHash;
                 }
 
                 numbersText.text = _sb.ToString();
@@ -182,16 +172,16 @@ namespace StatsUIPlugin
 
         private static void UpdateFontSize(TextMeshProUGUI Text, TextMeshProUGUI numbersText, TextMeshProUGUI headerText, int upgradeCount)
         {
-            float reduce = upgradeCount > 5 ? (upgradeCount - 5) * SPConfig.FontReducePerItem.Value : 0;
-            float newFontSize = Mathf.Clamp(SPConfig.BaseFontSize.Value - reduce, SPConfig.MinFontSize.Value, SPConfig.BaseFontSize.Value - reduce);
+            float reduce = upgradeCount > 5 ? (upgradeCount - 5) * SPConfig.ReducePerItem.Value : 0;
+            float newFontSize = Mathf.Clamp(SPConfig.BaseSize.Value - reduce, SPConfig.MinSize.Value, SPConfig.BaseSize.Value - reduce);
             Text.fontSize = newFontSize;
-            numbersText.fontSize = newFontSize + SPConfig.NumFontPer.Value;
-            if (headerText?.enabled ?? false) headerText.fontSize = newFontSize + SPConfig.HeaderFontOffset.Value;
+            numbersText.fontSize = newFontSize + SPConfig.NumOffset.Value;
+            headerText.fontSize = newFontSize + SPConfig.HeaderOffset.Value;
         }
 
         internal static void LogTranslationFailed(string key)
         {
-            if (_failedTranslations.Contains(key)) return;
+            if (_failedTrans.Contains(key)) return;
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(_bugFilePath));
@@ -201,7 +191,7 @@ namespace StatsUIPlugin
             {
                 StatsUIPlugin.Log.LogError($"写入Bug.txt失败：{ex.Message}");
             }
-            _failedTranslations.Add(key);
+            _failedTrans.Add(key);
             StatsUIPlugin.Log.LogWarning($"翻译失败 [{key}]：无对应中文，请清除其它翻译模组或联系汉化作者TooRed求助，QQ群：1050816144");
         }
     }
