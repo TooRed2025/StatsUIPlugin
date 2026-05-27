@@ -35,14 +35,16 @@ namespace StatsUIPlugin
                     return;
                 }
 
+                //没就不用翻译了
                 Type upgradesType = AccessTools.TypeByName("REPOLib.Modules.Upgrades");
                 if (upgradesType == null)
                 {
                     _hasModUpg = false;
-                    StatsUIPlugin.LogDebug($"未检测到 REPOLib中的模组升级项");
+                    StatsUIPlugin.LogDebug($"未检测到 REPOLib，大概不需翻译");
                     return;
                 }
 
+                //这个模组手动写升级项我也是醉了
                 var assemblies = AppDomain.CurrentDomain.GetAssemblies();
                 foreach (var assembly in assemblies)
                 {
@@ -54,9 +56,9 @@ namespace StatsUIPlugin
                     }
                 }
 
-                FieldInfo playerUpgradesField = upgradesType.GetField("_playerUpgrades", 
-                    BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-                
+                //就反射一次懒得写缓存
+                FieldInfo playerUpgradesField = AccessTools.Field(upgradesType, "_playerUpgrades");
+
                 if (playerUpgradesField == null)
                 {
                     _hasModUpg = false;
