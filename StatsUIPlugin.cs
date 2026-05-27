@@ -29,6 +29,8 @@ namespace StatsUIPlugin
             SPManager.DetectModdedUpgrades();
             Log.LogInfo("加载成功！");
         }
+
+        //日志开关
         internal static void LogDebug(FormattableString message)
         {
             if (SPConfig.DebugMode.Value)
@@ -38,6 +40,7 @@ namespace StatsUIPlugin
             }
         }
 
+        //Hook状态栏刷新
         [HarmonyPatch(typeof(StatsUI), "Fetch")]
         static class StatsUIFetchPatch
         {
@@ -47,6 +50,7 @@ namespace StatsUIPlugin
             }
         }
 
+        //Hook原版升级项翻译方法
         [HarmonyPatch(typeof(StatsUI), "GetUpgradeDisplayName")]
         static class GetUpgradeDisplayNamePatch
         {

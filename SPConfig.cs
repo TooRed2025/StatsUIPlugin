@@ -29,6 +29,7 @@ namespace StatsUIPlugin
             NumOffset = config.Bind(sec, "数字偏移", 0.4f, new ConfigDescription("数字字体偏移", new AcceptableValueRange<float>(-2f, 2f)));
             DebugMode = config.Bind(sec, "调试模式", false, new ConfigDescription("调试模式", new AcceptableValueList<bool>(true, false)));
 
+            //监听字体相关配置变化
             BaseSize.SettingChanged += (_, __) => ConfigChanged = true;
             MinSize.SettingChanged += (_, __) => ConfigChanged = true;
             ReducePerItem.SettingChanged += (_, __) => ConfigChanged = true;
@@ -37,6 +38,7 @@ namespace StatsUIPlugin
             FontMode.SettingChanged += (_, __) => ConfigChanged = true;
         }
 
+        //配置变更
         internal static bool IsConfigChanged()
         {
             bool changed = ConfigChanged;

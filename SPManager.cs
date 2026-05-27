@@ -25,6 +25,7 @@ namespace StatsUIPlugin
         private static bool _hasModUpg = false;
         private static int _lastUpgHash;
 
+        // 有没有模组升级项
         internal static void DetectModdedUpgrades()
         {
             try
@@ -79,6 +80,7 @@ namespace StatsUIPlugin
             }
         }
 
+        // 翻译升级项
         internal static string GetTranslatedName(string displayName)
         {
             if (!_hasModUpg)
@@ -122,6 +124,7 @@ namespace StatsUIPlugin
             return displayName;
         }
 
+        //美化状态栏
         internal static void ProcessStatsUI(StatsUI instance)
         {
             try
@@ -172,6 +175,7 @@ namespace StatsUIPlugin
             }
         }
 
+        //调整字体大小
         private static void UpdateFontSize(TextMeshProUGUI Text, TextMeshProUGUI numbersText, TextMeshProUGUI headerText, int upgradeCount)
         {
             float reduce = upgradeCount > 5 ? (upgradeCount - 5) * SPConfig.ReducePerItem.Value : 0;
@@ -181,6 +185,7 @@ namespace StatsUIPlugin
             headerText.fontSize = newFontSize + SPConfig.HeaderOffset.Value;
         }
 
+        //遇到没见过的升级项写进文本
         internal static void LogTranslationFailed(string key)
         {
             if (_failedTrans.Contains(key)) return;
