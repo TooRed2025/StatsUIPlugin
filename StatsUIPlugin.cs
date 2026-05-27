@@ -16,19 +16,17 @@ namespace StatsUIPlugin
         private void Awake()
         {
             Log = Logger;
-            _harmony = new Harmony("StatsUIPlugin");
-
-            SPConfig.Init(Config);
-
             if (AutoTranslator.Default == null)
             {
                 Log.LogError("XUnity.AutoTranslator未加载！");
                 return;
             }
 
-            SPManager.DetectModdedUpgrades();
-
+            _harmony = new Harmony("StatsUIPlugin");
             _harmony.PatchAll();
+
+            SPConfig.Init(Config);
+            SPManager.DetectModdedUpgrades();
             Log.LogInfo("加载成功！");
         }
         internal static void LogDebug(FormattableString message)
