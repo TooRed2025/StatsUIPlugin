@@ -1,0 +1,98 @@
+<b>FOCUS > </b>Move to fill the progress bar=<b>重点> </b>移动以填充进度条
+Use <u><b>WASD</b></u> on your keyboard until the progress bar is filled!=使用 <u><b>WASD</b></u> 移动，直到进度条填满！
+<sprite name\=!>=<sprite name\=!>
+Use <u><b>WASD</b></u> to move.=使用 <u><b>WASD</b></u> 移动。
+READY=准备就绪
+Good job! <sprite name\=creepycrying>=干得好 <sprite name\=creepycrying>
+<b>FOCUS > </b>Jump to fill the progress bar=<b>重点> </b>起跳以填充进度条
+Press <u><b>SPACE</b></u> to jump.=按 <u><b>空格</b></u> 跳。
+<b>FOCUS > </b>Sneak to fill the progress bar=<b>重点> </b>潜行填充进度条
+Press <u><b>CONTROL</b></u> to sneak. Monsters are less likely to see you.=按 <u><b>CTRL</b></u> 蹲下潜行。怪物不太可能看到你。
+<b>FOCUS > </b>Hide to fill the progress bar=<b>重点> </b>隐藏自己以填充进度条
+Use <u><b>CONTROL</b></u> to sneak under stuff and hide.=按下 <u><b>CTRL</b></u> 潜行到东西下面躲起来。
+<b>FOCUS > </b>Sprint to fill the progress bar=<b>重点> </b>冲刺以填充进度条
+Hold down <u><b>LEFT SHIFT</b></u> to sprint. This drains your energy.=按住 <u><b>左SHIFT</b></u> 冲刺。这会消耗你的精力。
+<b>FOCUS > </b>Run, jump and fall to fill the progress bar=<b>重点> </b>冲刺、跳跃和滚动以填充进度条
+Run and press <u><b>Q</b></u> to fall with style. Jumping also helps!=冲刺并按下 <u><b>Q</b></u> 要有风度地摔倒。跳跃也有帮助！
+<b>FOCUS > </b>Carry that thing to fill the progress bar=<b>重点> </b>拿起该物品以填充进度条
+Grab objects using <u><b>MOUSE LEFT</b></u>.=使用抓取 <u><b>鼠标左键</b></u>.
+<b>FOCUS > </b>Alter the distance of a grabbed item=<b>重点> </b>改变抓取物品的距离
+Use <u><b>MOUSE SCROLL</b></u> to alter the distance of grabbed objects.=使用 <u><b>鼠标滚轮</b></u> 以改变抓取物体的距离。
+<b>FOCUS > </b>Rotate stuff to fill the progress bar.=<b>重点> </b>旋转物品以填充进度条。
+Rotate grabbed objects using <u><b>MOUSE RIGHT</b></u>.=使用以下命令旋转抓取的对象 <u><b>鼠标右键</b></u>.
+<b>FOCUS > </b>Toggle that thing on and off.=<b>重点> </b>打开和关闭那个东西。
+Grab and press <u><b>E</b></u> to toggle items.=抓取并按下 <u><b>E</b></u> 切换物品开关。
+<b>FOCUS > </b>Fill your entire inventory.=<b>重点> </b>填满你的物品栏。
+Grab an Item and use <u><b>1</b></u>/<u><b>2</b></u>/<u><b>3</b></u> to put it in your inventory.=抓取物品并使用 <u><b>1</b></u>/<u><b>2</b></u>/<u><b>3</b></u> 把它放在你的物品栏中。
+<b>FOCUS > </b>Empty your entire inventory.=<b>重点> </b>清空您的全部物品栏。
+Use <u><b>1</b></u>/<u><b>2</b></u>/<u><b>3</b></u> to take items out of your inventory.=使用 <u><b>1</b></u>/<u><b>2</b></u>/<u><b>3</b></u> 从物品栏中取出物品。
+<b>FOCUS > </b>Check the map.=<b>重点> </b>查看地图。
+Use <u><b>TAB</b></u> to view the map. The map is <b><u>important</b></u> for navigation.=使用 <u><b>TAB</b></u> 查看地图。地图 <b><u>导航</b></u> 很重要。
+<b>FOCUS > </b>Walk around with the C.A.R.T. a little.=<b>重点> </b>带着C.A.R.T.手推车四处走走。
+This is a C.A.R.T. Grab it by the handle.=这是C.A.R.T.手推车，抓住把手。
+<b>FOCUS > </b>Fill the C.A.R.T. with valuables.=<b>重点> </b>把贵重物品装满C.A.R.T.手推车
+Fill C.A.R.T.s with valuables. C.A.R.T.s are <b><u>important</b></u> for carrying more stuff.=把贵重物品装满C.A.R.T.手推车。C.A.R.T. 可以<b><u>携带</b></u> 更多物品。
+<b>FOCUS > </b>Extract the valuables.=<b>重点> </b>取出贵重物品。
+Activate and fill <b><u>Extraction Points</b></u> with valuables.=激活并填充 <b><u>提取点</b></u> 的贵重物品。
+<b>FOCUS > </b>Fill the extraction point with valuables=<b>重点> </b>在提取点装满贵重物品
+Buy <b><u>Power Crystals</b></u> for the <b><u>Charging Station</b></u> to recharge and repair your gear!=购买<b><u>能量晶体</b></u>用于<b><u>充电站</b></u>，为你的装备充电和维修！
+ACTIVE=活跃的
+TAX RETURN=纳税申报单
+<sprite name\=check>=<sprite name\=check>
+EXTRACTION POINT COMPLETED=提取点已完成
+Revive other players by extracting their heads!=通过提取其他玩家的头来复活他们！
+Share your health with other players by grabbing their necks!=抓住其他玩家的脖子，分享你的血量！
+This level has multiple <b><u>Extraction Points</b></u>, you must clear them all to leave!=此级别有多个 <b><u>提取点</b></u>，你必须把他们都赶走！
+EXTRACTING=提取
+<b>FOCUS > </b>Get into the truck and send a message.=<b>重点> </b>上车并发送信息。
+COMPLETED=完成
+Enter the <b><u>truck</b></u> and send a message to your boss in order to leave a level.=输入 <b><u>卡车</b></u> 并向你的老板发送一条消息，以便去下一个关卡。
+Walk into the truck, grab (<u><b>MOUSE LEFT</b></u>) and hold the message area on the truck screen to send a message!=走进卡车，移动(<u><b>鼠标左键</b></u>)到卡车屏幕上的消息区域发送消息！
+HELLO! FILL THE <b><u>EXTRACTION POINT</b></u> WITH VALUABLES!=你好填写 <b><u>提取点</b></u> 贵重物品！
+STARTING ENGINE<color\=#CC331A>.</color><color\=#CC331A>.</color><color\=#CC331A>.</color>=启动引擎<color\=#CC331A>.</color><color\=#CC331A>.</color><color\=#CC331A>.</color>
+<b>FOCUS > </b>Enjoy the ride, recharge stuff and GEAR UP!=<b>重点> </b>享受旅程，补充能量，准备出发！
+<b>FOCUS > </b>Get back to the truck!=<b>重点> </b>回到卡车上！
+<b>FOCUS > </b>Find the next extraction point=<b>重点> </b>查找下一个提取点
+<b>FOCUS > </b>Buy stuff in the shop=<b>重点> </b>在商店里买东西
+<color\=#FF8C00>Press</color> <color\=white>E</color>=<color\=#FF8C00>按</color> <color\=white>E</color>
+HITTING THE ROAD<color\=#CC331A>.</color><color\=#CC331A>.</color><color\=#CC331A>.</color>=上路<color\=#CC331A>.</color><color\=#CC331A>.</color><color\=#CC331A>.</color>
+DESTROYING SLACKERS<color\=#66004C>.</color><color\=#66004C>.</color><color\=#66004C>.</color>=消灭懒鬼<color\=#66004C>.</color><color\=#66004C>.</color><color\=#66004C>.</color>
+Mode: STRONG=模式：强
+Mode: WEAK=模式：弱
+Taxman=税务员
+
+#0.4
+<b>FOCUS > </b>Move to fill the progress bar!=<b>目标 > </b>移动来填满进度条！
+<b>FOCUS > </b>Jump to fill the progress bar!=<b>目标 > </b>跳跃来填满进度条！
+<b>FOCUS > </b>Sneak to fill the progress bar!=<b>目标 > </b>潜行来填满进度条！
+<b>FOCUS > </b>Hide to fill the progress bar!=<b>目标 > </b>躲藏来填满进度条！
+<b>FOCUS > </b>Sprint to fill the progress bar!=<b>目标 > </b>冲刺来填满进度条！
+<b>FOCUS > </b>Run, jump and fall to fill the progress bar!=<b>目标 > </b>奔跑、跳跃并下落来填满进度条！
+<b>FOCUS > </b>Carry that thing to fill the progress bar!=<b>目标 > </b>携带物品来填满进度条！
+<b>FOCUS > </b>Alter the distance of a grabbed item!=<b>目标 > </b>调整手持物品的距离！
+<b>FOCUS > </b>Rotate stuff to fill the progress bar!=<b>目标 > </b>旋转物品来填满进度条！
+<b>FOCUS > </b>Toggle that thing on and off!=<b>目标 > </b>切换物品开关状态！
+<b>FOCUS > </b>Fill your entire inventory!=<b>目标 > </b>塞满整个物品栏！
+<b>FOCUS > </b>Empty your entire inventory!=<b>目标 > </b>清空整个物品栏！
+<b>FOCUS > </b>Check the map!=<b>目标 > </b>查看地图！
+Use <color\=#FF8500><u><b>TAB</b></u></color> to view the map. The map is <b><u>IMPORTANT</u></b> for navigation.=使用 <color\=#FF8500><u><b>TAB</b></u></color> 打开地图。地图对于探索路线<b><u>至关重要</u></b>。
+<b>FOCUS > </b>Walk around with the C.A.R.T. a little!=<b>目标 > </b>推着推车四处走一走！
+Mode: Strong=模式：强力
+<b>FOCUS > </b>Fill the C.A.R.T. with valuables!=<b>目标 > </b>将贵重物品装满推车！
+<b>FOCUS > </b>Extract the valuables!=<b>目标 > </b>撤离贵重物品！
+Activate and fill <b><u>EXTRACTION POINTS</u></b> with valuables.=激活撤离点，并将贵重物品放入其中。
+Extraction point activated=撤离点已激活
+Active=已激活
+Tax Return=收益结算
+Extracting>撤离中
+Extraction point completed=撤离点已完成
+Completed=已完成
+<b>FOCUS > </b>Get into the truck and send a message!=<b>目标 > </b>进入卡车并发送通讯！
+Enter the <b><u>TRUCK</u></b> and send a message to your boss in order to leave a level.=进入<b><u>卡车</u></b>并向老板发送通讯，即可离开当前关卡。
+Mode: Weak=模式：弱
+Locked=已锁定
+This is a <b><u>COSMETIC BOX</u></b>, extract it for a reward.=这是一个 <b><u>外观礼盒</u></b>，撤离可获得奖励。
+If it gets damaged, you can <b><u>HEAL</u></b> it using your own health.=如果它受到损坏，你可以消耗自身生命值来<b><u>修复</u></b>它。
+Insert <b><u>TAX TOKENS</u></b> into the shop machine to claim your rewards.=将 <b><u>税收代币</u></b> 放入商店机器即可领取奖励。
+Press <color\=#fff><u><b>E</b></u></color> to insert tax token=按下 <color\=#fff><u><b>E</b></u></color> 插入税收代币
+Press <color\=#FF8500><u><b>T</b></u></color> to open the chat! It's fun!=按下 <color\=#FF8500><u><b>T</b></u></color> 打开聊天！很有趣！

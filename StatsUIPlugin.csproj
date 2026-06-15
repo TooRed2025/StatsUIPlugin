@@ -35,10 +35,17 @@
 	
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 	</ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<OutputPath>Chinese_Translation\BepInEx\plugins\XUnity.AutoTranslator</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<DebugSymbols>false</DebugSymbols>
+  		<DebugType>none</DebugType>
+		<GenerateDependencyFile>false</GenerateDependencyFile>
+	</PropertyGroup>
 	
 	<ItemGroup>
 	  <Reference Include="XUnity.AutoTranslator.Plugin.Core">
-	    <HintPath>test\XUnity.AutoTranslator.Plugin.Core.dll</HintPath>
+	    <HintPath>Chinese_Translation\BepInEx\plugins\XUnity.AutoTranslator\XUnity.AutoTranslator.Plugin.Core.dll</HintPath>
 	    <Private>False</Private>
 	  </Reference>
 	</ItemGroup>

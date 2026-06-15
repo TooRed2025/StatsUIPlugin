@@ -1,0 +1,9 @@
+{
+    "name": "Chinese_Translation",
+    "version_number": "0.4.406",
+    "website_url": "https://github.com/TooRed2025/StatsUIPlugin",
+    "description": "REPO最新版本简体中文汉化包，包含本体和80多个常用MOD的翻译，让你的游戏再也没有令人费解的英文",
+    "dependencies": [
+	"BepInEx-BepInExPack-5.4.2305"
+    ]
+}

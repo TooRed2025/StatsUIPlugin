@@ -1,0 +1,84 @@
+#moneyrule
+r:"^([+-])?(\$\d+(?:\.\d+)?K)$"="$1$2"
+
+#Upgrade
+HEALTH=生命
+STAMINA=体力
+EXTRA JUMP=额外跳跃
+LAUNCH=翻滚速度
+TUMBLE CLIMB=翻滚抓墙
+DEATH HEAD BATTERY=头部电量
+MAP PLAYER COUNT=玩家统计
+SPEED=冲刺速度
+SPRINT SPEED=冲刺速度
+STRENGTH=力量
+RANGE=抓取范围
+CROUCH REST=下蹲恢复
+TUMBLE WINGS=翻滚翅膀
+TUMBLE LAUNCH=翻滚速度
+
+#place
+DISPOSAL ARENA=废品处理竞技场
+Disposal Arena=废品处理竞技场
+HEADMAN MANOR=海德曼庄园
+Headman Manor=海德曼庄园
+MUSEUM OF HUMAN ART=人类艺术博物馆
+Museum of Human Art=人类艺术博物馆
+KING OF THE LOSERS!=败者之王！
+MCJANNEK STATION=麦詹內克研究所
+McJannek Station=麦詹內克研究所
+Recording=录制中
+SERVICE STATION=服务站
+Service Station=服务站
+SHOP=商店
+SWIFTBROOM ACADEMY=斯威夫特布鲁姆学院
+Swiftbroom Academy=斯威夫特布鲁姆学院
+
+#moon
+Crescent Moon=新月
+The truck healer now restores 35 health.=卡车治疗现恢复 35 HP
+Monsters are now harder to knock down with valuables.=怪物现在更难被贵重物品击倒
+Half Moon=半月
+Monsters now overcharge your grabber.=怪物现会超载你的抓取器
+Monsters take heavy damage from pits, but can survive.=怪物现仅受深坑重创，但能存活
+The truck healer now restores 25 health.=卡车治疗现恢复 25 HP
+Full Moon=满月
+Monsters now overcharge your grabber by a total increase of 25%=怪物现会额外加快 25% 超载你的抓取器
+Monsters now take less damage from pits.=怪物现从深坑受到伤害减少
+Super Moon=超级月亮
+Enemy Orbs now explode when destroyed.=敌人灵魂球摧毁时将爆炸
+Monsters now overcharge your grabber by a total increase of 50%=怪物现会额外加快 50% 超载你的抓取器
+Monsters now take even less damage from pits.=怪物现从深坑受到伤害更少
+
+#dialogue
+r:"^(.+)to skip(.+)$"=$1以跳过$2
+need=需要
+get=得到
+team=团队
+DESTRUCT=销毁
+SEQUENCE=序列
+CANCELLED!=取消！
+SELF=自我
+can't=不能
+ditched=抛弃
+believe=相信
+My=我的
+my=我的
+to=到
+
+#0.4
+PLAYERUPGRADECROUCHREST=下蹲回体
+PLAYERUPGRADEEXTRAJUMP=额外跳跃
+PLAYERUPGRADEHEALTH=生命
+PLAYERUPGRADERANGE=抓取范围
+PLAYERUPGRADESPEED=冲刺速度
+PLAYERUPGRADESTAMINA=体力
+PLAYERUPGRADESTRENGTH=力量
+PLAYERUPGRADETUMBLEWINGS=翻滚滑翔
+PLAYERUPGRADEDEATHHEADBATTERY=头部电池
+PLAYERUPGRADEMAPPLAYERCOUNT=玩家数量
+PLAYERUPGRADETUMBLECLIMB=翻滚抓墙
+PLAYERUPGRADELAUNCH=翻滚速度
+
+SIGNAL OFFLINE=信号离线
+r:"^HOLD TO REROLL (.*)$"=长按刷新 $1

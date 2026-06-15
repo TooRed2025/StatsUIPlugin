@@ -1,0 +1,2 @@
+#enable fallback
+Credits=鸣谢/部分未汉化说明

@@ -1,0 +1,3 @@
+Empress control suite for R.E.P.O.=汉化该模组只为方便调试游戏，请不要滥用作弊
+SPAWN BROWSER=管理面板
+Empress Spawn Browser favors host-safe world actions and keeps local powers obvious and fast.=作弊模组汉化不公开，如必需请联系汉化作者TooRed
