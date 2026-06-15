@@ -14,14 +14,10 @@ namespace StatsUIPlugin
 {
     internal class SPManager
     {
-        private static readonly FieldInfo _playerUpgrades = AccessTools.Field(typeof(StatsUI), "playerUpgrades");
-        private static readonly FieldInfo _text = AccessTools.Field(typeof(StatsUI), "Text");
-        private static readonly FieldInfo _numbersText = AccessTools.Field(typeof(StatsUI), "textNumbers");
-        private static readonly FieldInfo _header = AccessTools.Field(typeof(StatsUI), "upgradesHeader");
-        private static readonly HashSet<string> _failedTrans = new HashSet<string>();
+        private static readonly HashSet<string> _failedTrans = [];
         private static readonly string _bugFilePath = Path.Combine(BepInEx.Paths.ConfigPath, "Translation", "zh", "Bug.txt");
-        private static readonly StringBuilder _sb = new StringBuilder(512);
-        private static readonly ConcurrentDictionary<string, string> _transCache = new ConcurrentDictionary<string, string>();
+        private static readonly StringBuilder _sb = new(512);
+        private static readonly ConcurrentDictionary<string, string> _transCache = [];
         private static bool _hasModUpg = false;
         private static int _lastUpgHash;
 
@@ -33,12 +29,15 @@ namespace StatsUIPlugin
                 if (!SPConfig.AutoCheck.Value)
                 {
                     _hasModUpg = true;
+                    StatsUIPlugin.LogDebug($"自动检测模组升级项已关闭，默认开启翻译");
                     return;
                 }
 
                 //没就不用翻译了
-                Type upgradesType = AccessTools.TypeByName("REPOLib.Modules.Upgrades");
-                if (upgradesType == null)
+                Type upgradesType = AppDomain.CurrentDomain.GetAssemblies()
+                    .Select(asm => asm.GetType("REPOLib.Modules.Upgrades", false))
+                    .FirstOrDefault(type => type is not null);
+                if (upgradesType is null)
                 {
                     _hasModUpg = false;
                     StatsUIPlugin.LogDebug($"未检测到 REPOLib，大概不需翻译");
@@ -134,16 +133,16 @@ namespace StatsUIPlugin
                     return;
                 }
 
-                var headerText = _header?.GetValue(instance) as TextMeshProUGUI;
+                var headerText = instance.upgradesHeader;
                 if (headerText?.enabled == false)
                 {
                     return;
                 }
 
-                var Text = _text?.GetValue(instance) as TextMeshProUGUI;
-                var numbersText = _numbersText?.GetValue(instance) as TextMeshProUGUI;
+                var Text = instance.Text;
+                var numbersText = instance.textNumbers;
 
-                var upgrades = _playerUpgrades?.GetValue(instance) as Dictionary<string, int>;
+                var upgrades = instance.playerUpgrades;
                 int upgradeHash = (upgrades == null || upgrades.Count == 0) ? 0 : upgrades.Values.Sum();
                 bool isChanged = upgradeHash != _lastUpgHash || SPConfig.IsConfigChanged();
 
@@ -201,6 +200,7 @@ namespace StatsUIPlugin
             StatsUIPlugin.Log.LogWarning($"翻译失败 [{key}]：无对应中文，请清除其它翻译模组或联系汉化作者TooRed求助，QQ群：1050816144");
         }
 
+        //重置
         internal static void PlayerAvatarStart()
         {
             _lastUpgHash = 0;

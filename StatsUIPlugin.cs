@@ -6,12 +6,12 @@ using XUnity.AutoTranslator.Plugin.Core;
 
 namespace StatsUIPlugin
 {
-    [BepInPlugin("StatsUIPlugin", "状态栏辅助插件", "1.1.0")]
+    [BepInPlugin("StatsUIPlugin", "状态栏辅助插件", "1.1.2")]
     [BepInDependency("gravydevsupreme.xunity.autotranslator", BepInDependency.DependencyFlags.HardDependency)]
     public class StatsUIPlugin : BaseUnityPlugin
     {
         internal static ManualLogSource Log { get; private set; }
-        private Harmony _harmony;
+        private Harmony Harmony;
 
         private void Awake()
         {
@@ -22,8 +22,8 @@ namespace StatsUIPlugin
                 return;
             }
 
-            _harmony = new Harmony("StatsUIPlugin");
-            _harmony.PatchAll();
+            Harmony = new Harmony("StatsUIPlugin");
+            Harmony.PatchAll();
 
             SPConfig.Init(Config);
             SPManager.DetectModdedUpgrades();
@@ -60,6 +60,7 @@ namespace StatsUIPlugin
             }
         }
 
+        //重置
         [HarmonyPatch(typeof(PlayerAvatar), "Start")]
         static class HookPlayerAvatarStart
         {
