@@ -36,7 +36,7 @@
 	<ItemGroup Condition="'$(Configuration)' == 'Release'">
 	</ItemGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<OutputPath>Chinese_Translation\BepInEx\plugins\XUnity.AutoTranslator</OutputPath>
+		<OutputPath>Chinese_Translation\BepInEx\patchers</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<DebugSymbols>false</DebugSymbols>
   		<DebugType>none</DebugType>
