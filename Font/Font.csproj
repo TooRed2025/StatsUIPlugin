@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>12</LangVersion>
     <Nullable>disable</Nullable>
     <Authors>TooRed</Authors>
-    <Version>1.1.2</Version>
+    <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -18,11 +18,6 @@
 		</RestoreAdditionalProjectSources>
 		<EnableGameReferences>true</EnableGameReferences>
 	</PropertyGroup>
-	<ItemGroup>
-	  <Compile Remove="Font\**" />
-	  <EmbeddedResource Remove="Font\**" />
-	  <None Remove="Font\**" />
-	</ItemGroup>
 	
 
 	<ItemGroup>
@@ -47,11 +42,4 @@
   		<DebugType>none</DebugType>
 		<GenerateDependencyFile>false</GenerateDependencyFile>
 	</PropertyGroup>
-	
-	<ItemGroup>
-	  <Reference Include="XUnity.AutoTranslator.Plugin.Core">
-	    <HintPath>Chinese_Translation\BepInEx\plugins\XUnity.AutoTranslator\XUnity.AutoTranslator.Plugin.Core.dll</HintPath>
-	    <Private>False</Private>
-	  </Reference>
-	</ItemGroup>
 </Project>
