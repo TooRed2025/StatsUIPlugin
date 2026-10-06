@@ -6,7 +6,7 @@ using XUnity.AutoTranslator.Plugin.Core;
 
 namespace StatsUIPlugin
 {
-    [BepInPlugin("StatsUIPlugin", "状态栏辅助插件", "1.1.2")]
+    [BepInPlugin("StatsUIPlugin", "状态栏辅助插件", "1.1.3")]
     [BepInDependency("gravydevsupreme.xunity.autotranslator", BepInDependency.DependencyFlags.HardDependency)]
     public class StatsUIPlugin : BaseUnityPlugin
     {
