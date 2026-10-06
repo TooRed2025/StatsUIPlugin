@@ -53,14 +53,14 @@ namespace StatsUIPlugin
                 if (hasGoopUpgrades)
                 {
                     _hasModUpg = true;
-                    StatsUIPlugin.LogDebug($"检测到 GoopUpgrades 升级项");
+                    StatsUIPlugin.Log.LogInfo($"检测到 GoopUpgrades 升级项");
                     return;
                 }
 
                 if (upgradesType is null)
                 {
                     _hasModUpg = false;
-                    StatsUIPlugin.LogDebug($"未检测到 REPOLib，大概不需翻译");
+                    StatsUIPlugin.Log.LogInfo($"未检测到MOD额外升级项，大概不需翻译，如出现升级项未翻译的情况，请关闭自动检测或联系作者反馈");
                     return;
                 }
 
@@ -77,7 +77,7 @@ namespace StatsUIPlugin
                 if (playerUpgrades is System.Collections.IDictionary dict)
                 {
                     _hasModUpg = dict.Count > 0;
-                    StatsUIPlugin.LogDebug($"检测到 {dict.Count} 个模组升级项");
+                    StatsUIPlugin.Log.LogInfo($"检测到 {dict.Count} 个模组升级项");
                 }
             }
             catch (Exception ex)

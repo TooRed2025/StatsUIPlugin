@@ -34,32 +34,78 @@ namespace FontPatch
         {
             try
             {
-                var markerFilePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, MarkerFileName);
-                var markerExists = File.Exists(markerFilePath);
+                bool updated = false;
 
-                bool needsUpdate = !markerExists || CheckVersionUpdate();
+                updated |= CopyFontFile();
+                updated |= CopyLocalizationFiles();
 
-                if (needsUpdate)
+                if (updated)
                 {
-                    Mylog.LogInfo("开始更新文件...");
-                    CopyFontFile();
-                    CopyLocalizationFiles();
+                    CreateMarkerFile();
                     Mylog.LogInfo("文件更新完成");
                 }
                 else
                 {
                     Mylog.LogInfo("无需更新，跳过");
                 }
-
-                if (!markerExists)
-                {
-                    CreateMarkerFile(markerFilePath);
-                }
             }
             catch (Exception ex)
             {
                 Mylog.LogError($"字体补丁执行异常：{ex.Message}");
             }
+        }
+
+        private static bool CopyFontFile()
+        {
+            var sourcePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, FontFileName);
+            var targetPath = Path.Combine(Paths.GameRootPath, FontFileName);
+
+            if (File.Exists(targetPath)) return false;
+            if (!File.Exists(sourcePath))
+            {
+                Mylog.LogError($"源字体文件不存在：{sourcePath}");
+                return false;
+            }
+
+            Mylog.LogInfo("字体文件不存在，开始复制");
+            File.Copy(sourcePath, targetPath, overwrite: true);
+            Mylog.LogInfo("复制字体文件完成");
+            return true;
+        }
+
+        private static bool CopyLocalizationFiles()
+        {
+            if (!CheckVersionUpdate()) return false;
+
+            var sourceDir = Path.Combine(Paths.ConfigPath, TranslationZhPath, LocalizationsFolderName);
+            var targetDir = Path.Combine(Paths.GameRootPath, StreamingAssetsPath, LocalizationsFolderName);
+
+            if (!Directory.Exists(sourceDir))
+            {
+                Mylog.LogError($"源本地化文件夹不存在：{sourceDir}");
+                return false;
+            }
+
+            Mylog.LogInfo("本地化文件需要更新，开始复制");
+            foreach (var file in TargetFiles)
+            {
+                var sourceFile = Path.Combine(sourceDir, file);
+                var targetFile = Path.Combine(targetDir, file);
+
+                if (!File.Exists(sourceFile))
+                {
+                    Mylog.LogError($"源文件不存在：{sourceFile}");
+                    continue;
+                }
+
+                if (File.Exists(targetFile))
+                {
+                    File.Delete(targetFile);
+                }
+                File.Copy(sourceFile, targetFile, overwrite: true);
+            }
+            Mylog.LogInfo("复制本地化文件完成");
+            return true;
         }
 
         private static bool CheckVersionUpdate()
@@ -82,56 +128,6 @@ namespace FontPatch
             }
 
             return false;
-        }
-
-        private static void CopyFontFile()
-        {
-            var sourcePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, FontFileName);
-            var targetPath = Path.Combine(Paths.GameRootPath, FontFileName);
-
-            if (!File.Exists(sourcePath))
-            {
-                Mylog.LogError($"源字体文件不存在：{sourcePath}");
-                return;
-            }
-
-            Mylog.LogInfo($"复制字体文件");
-            if (File.Exists(targetPath))
-            {
-                File.Delete(targetPath);
-            }
-            File.Copy(sourcePath, targetPath, overwrite: true);
-        }
-
-        private static void CopyLocalizationFiles()
-        {
-            var sourcePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, LocalizationsFolderName);
-            var targetPath = Path.Combine(Paths.GameRootPath, StreamingAssetsPath, LocalizationsFolderName);
-
-            if (!Directory.Exists(sourcePath))
-            {
-                Mylog.LogError($"源本地化文件夹不存在：{sourcePath}");
-                return;
-            }
-
-            foreach (var file in TargetFiles)
-            {
-                var sourceFile = Path.Combine(sourcePath, file);
-                var targetFile = Path.Combine(targetPath, file);
-
-                if (!File.Exists(sourceFile))
-                {
-                    Mylog.LogError($"源文件不存在：{sourceFile}");
-                    continue;
-                }
-
-                if (File.Exists(targetFile))
-                {
-                    File.Delete(targetFile);
-                }
-                File.Copy(sourceFile, targetFile, overwrite: true);
-            }
-            Mylog.LogInfo($"复制本地化文件完成");
         }
 
         private static string ReadVersion(string filePath)
@@ -177,12 +173,12 @@ namespace FontPatch
             return 0;
         }
 
-        private static void CreateMarkerFile(string markerFilePath)
+        private static void CreateMarkerFile()
         {
+            var markerFilePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, MarkerFileName);
             try
             {
                 using (File.Create(markerFilePath)) { }
-                Mylog.LogInfo("汉化补丁执行完成！");
             }
             catch (IOException ex)
             {
