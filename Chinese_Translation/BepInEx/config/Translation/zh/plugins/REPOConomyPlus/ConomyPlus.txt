@@ -391,7 +391,6 @@ Very Good=极佳
 Bad=恶劣
 Prices: {{A}}%=价格：{{A}}%
 Press [G] to close=按[G]关闭
-r:"^Difficulty: (.*?) \| Level: ([^|]+) \| Seed: ([^|]+) \| Players: (.+)$"="难度:$1 | 关卡:$2 | 种子:$3 | 玩家:$4"
 
 
 
@@ -916,9 +915,6 @@ Max phase reached=已达到最大阶段
 
 ########26年3月新增内容##############
 REPOConomyPlus=肉鸽
-r:"^Levels Played: (\d+)\nMax Level: (\d+)\nLevel 100 Reward Pack: (.+?)\nTotal Haul: \$([\d,]+)K\nBest Haul: \$([\d,]+)K\nEconomies Triggered: (\d+)\nModifiers Triggered: (\d+)\nShop Economies Triggered: (\d+)\nMod Completion: ([\d.]+)% \((\d+) / (\d+)\)\n\nDiscovered:\n  Economies: (\d+) / (\d+)\n  Modifiers: (\d+) / (\d+)\n  Shop Economies: (\d+) / (\d+)\n$"="游玩关卡数：$1  最高关卡：$2  百级奖励包：$3\n总收益：$$4K  最佳收益：$$5K\n触发经济事件：$6  触发修饰效果：$7  触发商店经济：$8\n模组完成度：$9%（$10 / $11）\n\n已发现内容：\n  经济事件：$12 / $13    修饰效果：$14 / $15    商店经济：$16 / $17\n"
-r:"^Discovered: (\d+) / (\d+)$"="已发现：$1 / $2"
-r:"^Triggered: (\d+)$"="已触发：$1"
 sr:"^(First discovered at progression level: )(\d+)(\nOccurrences: )(\d+)(\n\n)([\s\S]*)$"="$1$2$3$4$5$6"
 sr:"^(Type: )([^\n]+)(\nFirst discovered at progression level: )(\d+)(\nOccurrences: )(\d+)(\n\n)([\s\S]*)$"="$1$2$3$4$5$6$7$8"
 Type: =类型： 
@@ -1295,7 +1291,6 @@ Trendsetter—premium items surge +30…+60%!=引领潮流——高级物品暴�
 🌙  (Phase {{A}})=🌙  （{{A}}阶段）
 
 #26年5月更新
-r:"^Progress: (\d+) / (\d+) mastered, (\d+) / (\d+) tiers$"="进度：$1/$2已攻克，$3/$4等级"
 > Enemy Respawn Time: x{{A}} (+{{B}}%)=>敌人复活时间：x{{A}}（+{{B}}%）
 + Damage To Enemies: x{{A}} (+{{B}}%)=+对敌人的伤害：x{{A}}（+{{B}}%）
 ! Player Damage Taken: x{{A}} (+{{B}}%)=！玩家受到的伤害：x{{A}}（+{{B}}%）
@@ -1392,8 +1387,6 @@ Scale Enemy Damage With Enemy HP=怪物血量联动自身攻击倍率
 Press B to open the Black Market.=按B键打开黑市
 Buy reserves that block exact next rolls. A reserve is spent only when it actually prevents that modifier or economy.=购买储备可精准阻拦下次词条刷新，仅成功拦截词条时才消耗对应储备
 Black Market=黑市
-r:"^Currency: (.*)$"=持有货币：$1
-r:"^Reserves: (\d+) modifier, (\d+) economy, (\d+) shop economy$"=储备数量：特性$1、经济$2、商店经济$3
 Glass Dividend=玻璃分红
 Purchases stack. One reserve is consumed only when this exact entry would roll.=可叠加购买，仅对应词条刷新触发时消耗一份储备
 Choose modifier to block - $75K=选择阻拦的特性词条 - $75K
@@ -1649,7 +1642,7 @@ Every {{A}} seconds, the next hit is fully blocked=每8秒可完全格挡下一�
 Damage Ward=伤害屏障
 The first {{A}} hits each level deal no damage=每关卡前三次受到的攻击无效
 Titan's Vigor=泰坦活力
-Dropping below {{A}}% HP heals you to {{B}}% ({{C}}s cooldown)=生命值低于20%时，恢复至50%（冷却20秒）
+Dropping below {{A}}% HP heals you to {{B}}% ({{C}}s cooldown)=生命值低于15%时，恢复至50%（冷却30秒）
 Regeneration Aura=回复光环
 Regenerate {{A}} HP every second=每秒恢复1点生命值
 Bloodthirsty Healer=嗜血治愈
@@ -1665,7 +1658,7 @@ Survive up to {{A}} lethal hits per level (left at {{B}} HP)=每关卡可承受�
 First Strike=先发制人
 Enemies at {{A}}%+ health take {{B}}% more damage=敌人生命值高于90%时，受到伤害提升50%
 Adrenaline Surge=肾上腺素激增
-For {{A}}s after taking damage, deal {{B}}% more to enemies=受伤后的4秒内，对敌伤害提升30%
+For {{A}}s after taking damage, deal {{B}}% more to enemies=受伤后的3秒内，对敌伤害提升30%
 Brawler=近身搏斗
 Deal {{A}}% more damage to enemies in close range ({{B}}m)=4米范围内对敌伤害提升40%
 Toughened=身躯强韧
@@ -1683,7 +1676,7 @@ Each enemy kill deals {{A}} recoil damage to the nearest player=每击杀一名�
 Exhausted=体力耗尽
 You have no stamina and cannot sprint=耐力归零，无法冲刺
 Recoil Strikes=攻击反噬
-Damaging an enemy deals {{A}} damage back to you=攻击敌人时自身受到2点反伤
+Damaging an enemy deals {{A}} damage back to you=攻击敌人时自身受到5点反伤
 Vulnerable=极度易伤
 You take {{A}}% more damage from everything=受到所有类型伤害提升150%
 Soul Drain=灵魂汲取
@@ -1819,7 +1812,7 @@ Enemies deal {{A}}% less damage to players=敌人对玩家造成的伤害降低4
 Soft Spot=弱点区域
 Enemies below {{A}}% health take {{B}}% more damage=敌人生命值低于50%时，受到伤害提升30%
 Stumbling Enemies=踉跄效果
-{{A}}% chance a hit knocks an enemy off balance (freezes it {{B}}s)=攻击时有10%概率让敌人失衡，僵直2秒
+{{A}}% chance a hit knocks an enemy off balance (freezes it {{B}}s)=攻击时有15%概率让敌人失衡，僵直3秒
 Generous Kills=丰厚击杀
 {{A}}% chance a killed enemy drops a bonus orb=击杀敌人有50%概率额外掉落魂球
 Soul Harvest=灵魂汲取
@@ -2452,16 +2445,94 @@ Damaging a valuable raises its value (up to 50% more)=撞击贵重物品会使�
 Faster Respawn=快速重生
 Enemies respawn {{A}}% faster after death=敌人死后重生时间减半
 Enemies respawn 50% faster after death=敌人死后重生时间减半
-r:"^Press B to open the Black Market.\nShop: (.*)$"=按B打开黑市。
 Centurion Compound=百级增益
+
+Centurion Market=百级市场
+Level {{A}} mastery unlocks a prestige market with high guaranteed profit and huge upside.={{A}}关的掌握开启了一个具有高保证利润和巨大上行空间的声望市场。
+
+
+EVENTS=事件
+Moon=月亮
+Active Modifiers=启用的特性
+No modifiers this level.=此级别没有。
+Active Economy=启用的经济
+Seed: =种子:
+Level: 1=级别：1
+RUN INFO=运行信息
+Modules:=房间数:
+Extractions:=提取点数量:
+Haul:=运载倍率:
+No Moon=没有月相
+Moon Phase=月相
+Map scaling not active on this level.=此级别上的地图缩放未激活。
+Map Scaling=地图缩放
+Easy=简单
+Difficulty: =难度： 
+Player Damage:=玩家伤害：
+Map Value:=地图价值：
+Enemy Cap:=怪物数量：
+Enemy HP:=怪物生命：
+Enemy Damage:=怪物伤害：
+Enemy Respawn:=重生间隔：
+半月 (Phase 2)=半月 （第2阶段）
+Level:=等级:
+Purchases via the BlackMarket hotkey menu.=通过黑市热键菜单购买。
+MARKET=市场
+15% chance a hit knocks an enemy off balance (freezes it 3s)=15%的几率击中会使敌人失去平衡（CD3秒）
+
+Modifier=事件
+
+Event Chances=活动几率
+CHANCES=几率
+
+
+
+
+Black Market=黑市
+Prices: =价格:
+Health: =血包:
+Upgrades: =升级:
+Base: =基础:
+Difficulty: =难度： 
+Extreme=极端
+Crystals: =能量水晶： 
+Very Hard=非常困难
+ (Phase 6)= （第6阶段）
+ (Phase 5)= （第5阶段）
+超级月亮 (Phase 4)=超级月亮 （第4阶段）
+满月 (Phase 3)=满月 （第3阶段）
+新月 (Phase 1)=新月 （第1阶段）
+#商店匹配
+sr:"^(?<head>[A-Za-z]+: )(?<suffix_i>[+-][\d.]+\%)?(?<dou_i>, )?(?<after>[\s\S]*)$"="${head}${suffix_i}${dou_i}${after}"
+#难度
+sr:"^(?<name>\w+) \((?<num_i>[\d.]+)\)$"="${name} (${num_i})"
+#匹配黑市商店
+sr:"^(?<suf_i>\$\w+K — )(?<text>.+)$"="${suf_i}${text}"
+sr:"^(?<text>.+?) - from (?<suf_i>\$.+)$"="${text} - 最低 ${suf_i}"
+
+r:"^Bad( — [\d.]+%)$"="较差$1"
+r:"^Neutral( — [\d.]+%)$"="中性$1"
+r:"^Good( — [\d.]+%)$"="良好$1"
+r:"^Very Good( — [\d.]+%)$"="非常好$1"
+r:"^Very Bad( — [\d.]+%)$"="非常差$1"
+r:"^(Scary to block \= pricier \(from )(.+\))$"="不敢阻止\=价格更高（初始$2"
+r:"^(Painful for wallet \= pricier \(from )(.+\))$"="钱包痛\=更贵（初始$2"
+r:"^(Scary or common \= pricier \(from )(.+\))$"="危险或常见\=价格更高（初始$2"
+r:"^Black Market reserves:([\s\S]*)$"="黑市储备(懒得翻译了,自己大概记得就行了)：$1"
 r:"^Choose modifier to block - (\$.+)$"="选择阻拦的特性词条 - $1"
 r:"^(Block Shop Economy) - (\$.+)$"="阻拦商店经济词条 - $2"
 r:"^(Block Economy) - (\$.+)$"="阻拦经济词条 - $2"
 r:"^(Block Modifier) - (\$.+)$"="阻拦特性词条 - $2"
 r:"^(Choose economy to block) - (\$.+)$"="选择阻拦经济词条 - $2"
 r:"^(Choose shop economy to block) - (\$.+)$"="选择阻拦商店经济词条 - $2"
-sr:"^(.*)( x.+)"=$1$2
-
-Centurion Market=百级市场
-Level {{A}} mastery unlocks a prestige market with high guaranteed profit and huge upside.={{A}}关的掌握开启了一个具有高保证利润和巨大上行空间的声望市场。
-r:"^Black Market reserves:([\s\S]*)$"="黑市储备(懒得翻译了)：$1"
+#sr:"^(.*)( x.+)"=$1$2
+#r:"^Press B to open the Black Market.\nShop: (.*)$"=按B打开黑市。
+r:"^(Not enough currency\.)\n(Need )(\$.+?)\.$"="货币不足。\n需要$3。"
+r:"^Next phase in (\d+) levels$"="还需$1个关卡进入下一阶段"
+#r:"^Difficulty: (.*?) \| Level: ([^|]+) \| Seed: ([^|]+) \| Players: (.+)$"="难度:$1 | 关卡:$2 | 种子:$3 | 玩家:$4"
+r:"^Levels Played: (\d+)\nMax Level: (\d+)\nLevel 100 Reward Pack: (.+?)\nTotal Haul: \$([\d,]+)K\nBest Haul: \$([\d,]+)K\nEconomies Triggered: (\d+)\nModifiers Triggered: (\d+)\nShop Economies Triggered: (\d+)\nMod Completion: ([\d.]+)% \((\d+) / (\d+)\)\n\nDiscovered:\n  Economies: (\d+) / (\d+)\n  Modifiers: (\d+) / (\d+)\n  Shop Economies: (\d+) / (\d+)\n$"="游玩关卡数：$1  最高关卡：$2  百级奖励包：$3\n总收益：$$4K  最佳收益：$$5K\n触发经济事件：$6  触发修饰效果：$7  触发商店经济：$8\n模组完成度：$9%（$10 / $11）\n\n已发现内容：\n  经济事件：$12 / $13    修饰效果：$14 / $15    商店经济：$16 / $17\n"
+r:"^Discovered: (\d+) / (\d+)$"="已发现：$1 / $2"
+r:"^Triggered: (\d+)$"="已触发：$1"
+r:"^Progress: (\d+) / (\d+) mastered, (\d+) / (\d+) tiers$"="进度：$1/$2已攻克，$3/$4等级"
+r:"^Currency: (.*)$"=持有货币：$1
+r:"^Reserves: (\d+) modifier, (\d+) economy, (\d+) shop economy$"=储备数量：特性$1、经济$2、商店经济$3

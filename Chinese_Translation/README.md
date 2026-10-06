@@ -1,12 +1,10 @@
 ## ❤️模组内容 (基于 XUnity.AutoTranslator-BepInEx-5.6.1)
 
-# ‼️注意‼️ v0.4.1之后的汉化模组使用了官方本地化文本替换方式，即使卸载模组打开游戏也依然会显示中文，不是BUG请放心使用。<details><summary>Uninstallation method</summary><ul>Browse <code>REPO_Data/StreamingAssets/Localizations</code>.Delete the three mapping files Game.tsv, HUD.tsv and Menu.tsv under Localizations folder,but don't delete the ones in the <code>Default</code> folder though.</ul></details>
-
-
-### 给不会安装的朋友：点击查看一键安装傻瓜包的[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")
+### 安装教程在页面最下方
 
 - 如果有什么遗漏错漏的文本或者有什么需要翻译的常用MOD欢迎加QQ群反馈：1050816144 <a href="https://qm.qq.com/q/WyQBNSzdyI" target="_blank">一键加入🐧</a>
 
+- ‼️注意‼️ v0.4.1之后的汉化模组使用了官方本地化文本替换方式，即使卸载模组打开游戏也依然会显示中文，不是BUG请放心使用。
 ------------
 
 ### 📔版本说明
@@ -14,7 +12,7 @@
 - 🌒不会安装的直接拉到最下方查看安装方法
 - 🌓6月8日更新了REPOConomyPlus2.0.0的翻译文本
 - 🌔玩REPOConomyPlus模组的玩家请仔细看一下游戏内的肉鸽-汉化说明，能解决大部分没看到汉化的问题
-- 🌕修复错误
+- 🌕0.4.407版本推荐把旧版完全清除干净重新安装
 
 ------------
 
@@ -64,15 +62,17 @@
 | 字体最小值 | `16.0` | 字体大小下限，防止升级项过多导致文本过小无法阅读 |
 | 标题偏移值 | `7.0` | 状态栏标题文本的字体偏移值 |
 | 数字偏移 | `0.4` | 启用/禁用数字文本的偏移，调节数字文本会与文本对齐，防止与文本重叠.不必手动修改 |
+| 退出清理本地化 | `关闭` | 游戏退出时删除本体汉化文件，下次启动时重新安装，用于想玩原版英文REPO的玩家(?) |
 ------------
 
 
 ### 💾安装方法
 
-- 使用 Thunderstore Mod Manager 安装(推荐)
+- 使用 MOD管理器(R2/GALE) 安装(推荐)
 
 - 或者手动下载文件，解压BepInEx文件夹到游戏根目录里(例：SteamLibrary\steamapps\common\REPO)，点击看[安装教程](https://www.bilibili.com/video/BV1A8r9BoEtv "教程")
-- 进群下载一键安装包（纯一键傻瓜操作，无任何前置要求）
+
+- 查看一键安装傻瓜包的[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")，安装包进群获取
 
 - ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化MOD）
 
@@ -84,3 +84,4 @@
 ### 🏛️其他
 
 - 引用翻译文本和修改插件代码请注明出处
+- <details><summary>Uninstallation method</summary><ul>Browse <code>REPO_Data/StreamingAssets/Localizations</code>.Delete the three mapping files Game.tsv, HUD.tsv and Menu.tsv under Localizations folder,but don't delete the ones in the <code>Default</code> folder though.</ul></details>

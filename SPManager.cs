@@ -33,27 +33,35 @@ namespace StatsUIPlugin
                     return;
                 }
 
-                //没就不用翻译了
-                Type upgradesType = AppDomain.CurrentDomain.GetAssemblies()
-                    .Select(asm => asm.GetType("REPOLib.Modules.Upgrades", false))
-                    .FirstOrDefault(type => type is not null);
+                //检测
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+                Type upgradesType = null;
+                bool hasGoopUpgrades = false;
+
+                foreach (var assembly in assemblies)
+                {
+                    if (assembly.FullName.Contains("GoopUpgrades"))
+                    {
+                        hasGoopUpgrades = true;
+                    }
+                    if (upgradesType is null)
+                    {
+                        upgradesType = assembly.GetType("REPOLib.Modules.Upgrades", false);
+                    }
+                }
+
+                if (hasGoopUpgrades)
+                {
+                    _hasModUpg = true;
+                    StatsUIPlugin.LogDebug($"检测到 GoopUpgrades 升级项");
+                    return;
+                }
+
                 if (upgradesType is null)
                 {
                     _hasModUpg = false;
                     StatsUIPlugin.LogDebug($"未检测到 REPOLib，大概不需翻译");
                     return;
-                }
-
-                //这个模组手动写升级项我也是醉了
-                var assemblies = AppDomain.CurrentDomain.GetAssemblies();
-                foreach (var assembly in assemblies)
-                {
-                    if (assembly.FullName.Contains("GoopUpgrades"))
-                    {
-                        _hasModUpg = true;
-                        StatsUIPlugin.LogDebug($"检测到 GoopUpgrades 升级项");
-                        return;
-                    }
                 }
 
                 //就反射一次懒得写缓存

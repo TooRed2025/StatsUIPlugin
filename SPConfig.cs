@@ -13,6 +13,7 @@ namespace StatsUIPlugin
         public static ConfigEntry<bool> FontMode { get; private set; }
         public static ConfigEntry<bool> DebugMode { get; private set; }
         public static ConfigEntry<bool> AutoCheck { get; private set; }
+        public static ConfigEntry<bool> CleanupOnQuit { get; private set; }
 
         public static bool ConfigChanged { get; private set; } = true;
 
@@ -28,6 +29,7 @@ namespace StatsUIPlugin
             HeaderOffset = config.Bind(sec, "标题偏移", 7f, new ConfigDescription("标题字体偏移", new AcceptableValueRange<float>(0f, 15f)));
             NumOffset = config.Bind(sec, "数字偏移", 0.4f, new ConfigDescription("数字字体偏移", new AcceptableValueRange<float>(-2f, 2f)));
             DebugMode = config.Bind(sec, "调试模式", false, new ConfigDescription("调试模式", new AcceptableValueList<bool>(true, false)));
+            CleanupOnQuit = config.Bind(sec, "退出清理本地化", false, new ConfigDescription("游戏退出时删除汉化文件，下次启动时重新部署", new AcceptableValueList<bool>(true, false)));
 
             //监听字体相关配置变化
             BaseSize.SettingChanged += (_, __) => ConfigChanged = true;

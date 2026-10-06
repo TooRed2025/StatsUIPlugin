@@ -26,6 +26,7 @@ namespace StatsUIPlugin
             Harmony.PatchAll();
 
             SPConfig.Init(Config);
+            SPlocal.Init();
             SPManager.DetectModdedUpgrades();
             Log.LogInfo("加载成功！");
         }
