@@ -1,18 +1,20 @@
 ## ❤️模组内容 (基于 XUnity.AutoTranslator-BepInEx-5.6.1)
 
-### 安装教程在页面最下方
+### ‼️注意‼️ 
+- 安装方法在页面最下方
 
-- 如果有什么遗漏错漏的文本或者有什么需要翻译的常用MOD欢迎加QQ群反馈：1050816144 <a href="https://qm.qq.com/q/WyQBNSzdyI" target="_blank">一键加入🐧</a>
+- v0.4.1之后的汉化模组使用了官方本地化文本替换方式，即使卸载模组打开游戏也依然会显示中文，不是BUG请放心使用。
 
-- ‼️注意‼️ v0.4.1之后的汉化模组使用了官方本地化文本替换方式，即使卸载模组打开游戏也依然会显示中文，不是BUG请放心使用。
+- 如果有遗漏错漏的文本或者有需要翻译的MOD欢迎加QQ群反馈：1050816144 <a href="https://qm.qq.com/q/WyQBNSzdyI" target="_blank">一键加入🐧</a>
 ------------
 
 ### 📔版本说明
-- 🌑适配R.E.P.O.的v0.4.4版本
-- 🌒不会安装的直接拉到最下方查看安装方法
-- 🌓6月8日更新了REPOConomyPlus2.0.0的翻译文本
-- 🌔玩REPOConomyPlus模组的玩家请仔细看一下游戏内的肉鸽-汉化说明，能解决大部分没看到汉化的问题
-- 🌕0.4.407版本推荐把旧版完全清除干净重新安装
+- 适配R.E.P.O.的v0.4.4版本
+- 玩REPOConomyPlus模组的玩家请仔细看一下游戏内的肉鸽-汉化说明，能解决大部分没看到汉化的问题
+- 0.4.407版本推荐把旧版汉化完全清除干净重新安装
+- 修复部分错误
+- 辅助插件新增本地化文件清除功能
+- 修改文件复制逻辑
 
 ------------
 
@@ -43,6 +45,9 @@
     <li><a href="https://thunderstore.io/c/repo/?q=Wesley" target="_blank">✔️Wesleys collection</a>(卫斯理系列模组)</li>
     <li><a href="https://thunderstore.io/c/repo/p/PxntxrezStudio/REPOConomyPlus/" target="_blank">✔️REPOConomyPlus</a>(重磅经济和游戏机制肉鸽模组)</li>
     <li><a href="https://thunderstore.io/c/repo/p/Lunoid/REPO_Alchemy/" target="_blank">✔️REPO_Alchemy</a>(炼金及<a href="https://thunderstore.io/c/repo/p/toored/BlackBox_cn/" target="_blank">Unique_Potions</a>独特药水拓展模组)</li>
+    <li><a href="https://thunderstore.io/c/repo/p/Eberk/Cats/" target="_blank">✔️Cats</a>(猫)</li>
+    <li><a href="https://thunderstore.io/c/repo/p/Xepos/Mutators/" target="_blank">✔️Mutators</a>(变异)</li>
+    <li><a href="https://thunderstore.io/c/repo/p/GoblinKingShmee/" target="_blank">✔️UmamusumeSemibots/Genshin</a>(赛马娘与原神)</li>
     <li>✔️还有其余大部分模组因为翻译工作量太少所以没列出来🤪</li>
 </ul>
 </details>
@@ -50,7 +55,7 @@
 ------------
 
 
-### 📑状态栏辅助插件配置文件
+### 📑状态栏辅助插件配置说明
 | 设置 | 默认 | 说明 |
 |---------|---------|-------------|
 | 启用翻译 | `开启` | 启用/禁用状态栏翻译功能，关闭也能看到中文，只是无法翻译更多的升级项MOD |
@@ -62,7 +67,7 @@
 | 字体最小值 | `16.0` | 字体大小下限，防止升级项过多导致文本过小无法阅读 |
 | 标题偏移值 | `7.0` | 状态栏标题文本的字体偏移值 |
 | 数字偏移 | `0.4` | 启用/禁用数字文本的偏移，调节数字文本会与文本对齐，防止与文本重叠.不必手动修改 |
-| 退出清理本地化 | `关闭` | 游戏退出时删除本体汉化文件，下次启动时重新安装，用于想玩原版英文REPO的玩家(?) |
+| 退出清理本地化 | `关闭` | 游戏退出时删除本地汉化文件，用于想玩原版英文REPO的玩家(?) |
 ------------
 
 
@@ -72,16 +77,15 @@
 
 - 或者手动下载文件，解压BepInEx文件夹到游戏根目录里(例：SteamLibrary\steamapps\common\REPO)，点击看[安装教程](https://www.bilibili.com/video/BV1A8r9BoEtv "教程")
 
-- 查看一键安装傻瓜包的[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")，安装包进群获取
+- 查看一键汉化安装程序的[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")
 
-- ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化MOD）
+- ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化文件）
 
 ### 😀鸣谢
 
-- 群友VMes
+- VMes
 - 各位提交BUG的群友
 
 ### 🏛️其他
 
 - 引用翻译文本和修改插件代码请注明出处
-- <details><summary>Uninstallation method</summary><ul>Browse <code>REPO_Data/StreamingAssets/Localizations</code>.Delete the three mapping files Game.tsv, HUD.tsv and Menu.tsv under Localizations folder,but don't delete the ones in the <code>Default</code> folder though.</ul></details>

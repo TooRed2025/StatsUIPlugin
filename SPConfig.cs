@@ -20,9 +20,9 @@ namespace StatsUIPlugin
         internal static void Init(ConfigFile config)
         {
             var sec = "状态栏设置";
-            EnableTranslation = config.Bind(sec, "状态栏翻译功能", true, new ConfigDescription("启用翻译功能", new AcceptableValueList<bool>(true, false)));
+            EnableTranslation = config.Bind(sec, "状态栏翻译", true, new ConfigDescription("启用翻译功能", new AcceptableValueList<bool>(true, false)));
             FontMode = config.Bind(sec, "字体大小变更", true, new ConfigDescription("字体大小变更", new AcceptableValueList<bool>(true, false)));
-            AutoCheck = config.Bind(sec, "检测mod升级项", true, new ConfigDescription("自动检测额外的mod升级", new AcceptableValueList<bool>(true, false)));
+            AutoCheck = config.Bind(sec, "自动检测mod升级项", true, new ConfigDescription("自动检测额外的mod升级", new AcceptableValueList<bool>(true, false)));
             BaseSize = config.Bind(sec, "基础字体大小", 35f, new ConfigDescription("基础字体大小", new AcceptableValueRange<float>(8f, 48f)));
             MinSize = config.Bind(sec, "最小字体大小", 16f, new ConfigDescription("最小字体大小", new AcceptableValueRange<float>(4f, 24f)));
             ReducePerItem = config.Bind(sec, "字体递减", 1.4f, new ConfigDescription("每多一项升级减少的字体大小", new AcceptableValueRange<float>(0f, 5f)));
