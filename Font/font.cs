@@ -46,7 +46,7 @@ namespace FontPatch
                 }
                 else
                 {
-                    Mylog.LogInfo("无需更新，跳过");
+                    Mylog.LogDebug("无需更新，跳过");
                 }
             }
             catch (Exception ex)
@@ -63,7 +63,7 @@ namespace FontPatch
             if (File.Exists(targetPath)) return false;
             if (!File.Exists(sourcePath))
             {
-                Mylog.LogError($"源字体文件不存在：{sourcePath}");
+                Mylog.LogDebug($"源字体文件不存在：{sourcePath}");
                 return false;
             }
 

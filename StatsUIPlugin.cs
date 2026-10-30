@@ -70,5 +70,17 @@ namespace StatsUIPlugin
                 SPManager.PlayerAvatarStart();
             }
         }
+
+        //文本覆盖
+        [HarmonyPatch(typeof(LocalizationManager))]
+        public static class LocalizationManagerHook
+        {
+            [HarmonyPatch("LoadLocalizationOverrides")]
+            [HarmonyPostfix]
+            public static void LoadLocalizationOverridesPostfix()
+            {
+                SPlocal.ApplyOverrides();
+            }
+        }
     }
 }
