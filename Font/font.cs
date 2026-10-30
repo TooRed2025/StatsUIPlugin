@@ -18,7 +18,7 @@ namespace FontPatch
 
         public static IEnumerable<string> TargetDLLs { get; } = Array.Empty<string>();
 
-        private const string FontFileName = "notosanssc";
+        private const string FontFileName = "notosanssc6000";
         private const string MarkerFileName = "汉化文本By_TooRed";
         private const string TranslationZhPath = "Translation/zh";
         private const string LocalizationsFolderName = "Localizations";

@@ -4,7 +4,7 @@
 
 - 热烈庆祝v0.5大更新，终于有官方中文了。以后更新应该只翻译各种模组或者修复BUG。
 
-- 精简汉化包去除字体库，如部分模组依然显示口口口口的需要到本汉化模组github里下载适配的字体库。[Github下载地址](https://github.com/TooRed2025/StatsUIPlugin/releases/tag/v0.5.001 "地址")
+- 精简汉化包去除字体库，如部分模组依然显示口口口口的需要到本汉化模组Q群或者github里下载适配的字体库。[Github下载地址](https://github.com/TooRed2025/StatsUIPlugin/releases "地址")
 
 - ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化文件）
 
@@ -134,8 +134,6 @@
 - 推荐使用 MOD管理器(R2/Gale) 安装
 
 - 手动下载文件，解压BepInEx文件夹到游戏根目录里(例：SteamLibrary\steamapps\common\REPO)，点击看[安装教程](https://www.bilibili.com/video/BV1A8r9BoEtv "教程")
-
-- 进群下载使用一键汉化安装程序，查看[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")
 
 ------------
 
