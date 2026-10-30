@@ -4,6 +4,8 @@
 
 - 热烈庆祝v0.5大更新，终于有官方中文了。以后更新应该只翻译各种模组或者修复BUG。
 
+- 精简汉化包去除字体库，如部分模组依然显示口口口口的需要到本汉化模组github里下载适配的字体库。[Github下载地址](https://github.com/TooRed2025/StatsUIPlugin/releases/tag/v0.5.001 "地址")
+
 - ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化文件）
 
 - 如果有遗漏错漏的文本或者有需要翻译的模组欢迎加QQ群反馈：1050816144 <a href="https://qm.qq.com/q/WyQBNSzdyI" target="_blank">一键加入🐧</a>
@@ -156,7 +158,6 @@
 
 ### 😀鸣谢
 
-- VMes
 - 各位提交BUG的群友
 
 ------------
