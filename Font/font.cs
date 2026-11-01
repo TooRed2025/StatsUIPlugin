@@ -18,13 +18,12 @@ namespace FontPatch
 
         public static IEnumerable<string> TargetDLLs { get; } = Array.Empty<string>();
 
-        private const string FontFileName = "notosanssc6000";
-        private const string MarkerFileName = "汉化文本By_TooRed";
+        private const string FontFileName = "notosanssc";
+        //private const string MarkerFileName = "汉化文本By_TooRed";
         private const string TranslationZhPath = "Translation/zh";
         private const string LocalizationsFolderName = "Localizations";
         private const string StreamingAssetsPath = "REPO_Data/StreamingAssets";
         private const string VersionFileName = "version.ini";
-        private static readonly string[] TargetFiles = new[] { "Game.tsv", "HUD.tsv", "Menu.tsv", "version.ini" };
 
         public static void Patch(AssemblyDefinition _)
         {
@@ -35,18 +34,19 @@ namespace FontPatch
             try
             {
                 bool updated = false;
+                bool versionUpdated = CheckVersionUpdate();
 
-                updated |= CopyFontFile();
-                updated |= CopyLocalizationFiles();
+                updated |= CopyFontFile(versionUpdated);
+                updated |= CopyLocalizationFiles(versionUpdated);
 
                 if (updated)
                 {
-                    CreateMarkerFile();
+                    //CreateMarkerFile();
                     Mylog.LogInfo("文件更新完成");
                 }
                 else
                 {
-                    Mylog.LogDebug("无需更新，跳过");
+                    Mylog.LogInfo("无需更新，跳过");
                 }
             }
             catch (Exception ex)
@@ -55,27 +55,28 @@ namespace FontPatch
             }
         }
 
-        private static bool CopyFontFile()
+        private static bool CopyFontFile(bool versionUpdated)
         {
             var sourcePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, FontFileName);
             var targetPath = Path.Combine(Paths.GameRootPath, FontFileName);
 
-            if (File.Exists(targetPath)) return false;
             if (!File.Exists(sourcePath))
             {
                 Mylog.LogDebug($"源字体文件不存在：{sourcePath}");
                 return false;
             }
 
-            Mylog.LogInfo("字体文件不存在，开始复制");
+            if (File.Exists(targetPath) && !versionUpdated) return false;
+            Mylog.LogInfo("字体文件不存在或模组版本较新，开始复制");
+            
             File.Copy(sourcePath, targetPath, overwrite: true);
             Mylog.LogInfo("复制字体文件完成");
             return true;
         }
 
-        private static bool CopyLocalizationFiles()
+        private static bool CopyLocalizationFiles(bool versionUpdated)
         {
-            if (!CheckVersionUpdate()) return false;
+            if (!versionUpdated) return false;
 
             var sourceDir = Path.Combine(Paths.ConfigPath, TranslationZhPath, LocalizationsFolderName);
             var targetDir = Path.Combine(Paths.GameRootPath, StreamingAssetsPath, LocalizationsFolderName);
@@ -87,21 +88,9 @@ namespace FontPatch
             }
 
             Mylog.LogInfo("本地化文件需要更新，开始复制");
-            foreach (var file in TargetFiles)
+            foreach (var sourceFile in Directory.GetFiles(sourceDir))
             {
-                var sourceFile = Path.Combine(sourceDir, file);
-                var targetFile = Path.Combine(targetDir, file);
-
-                if (!File.Exists(sourceFile))
-                {
-                    Mylog.LogError($"源文件不存在：{sourceFile}");
-                    continue;
-                }
-
-                if (File.Exists(targetFile))
-                {
-                    File.Delete(targetFile);
-                }
+                var targetFile = Path.Combine(targetDir, Path.GetFileName(sourceFile));
                 File.Copy(sourceFile, targetFile, overwrite: true);
             }
             Mylog.LogInfo("复制本地化文件完成");
@@ -123,7 +112,7 @@ namespace FontPatch
 
             if (string.IsNullOrEmpty(targetVersion) || CompareVersions(sourceVersion, targetVersion) > 0)
             {
-                Mylog.LogInfo($"检测到新版本：源版本{sourceVersion} > 目标版本{targetVersion}，强制更新");
+                Mylog.LogInfo($"检测到新版本：源版本{sourceVersion} > 目标版本{targetVersion}，需要更新");
                 return true;
             }
 
@@ -172,7 +161,7 @@ namespace FontPatch
 
             return 0;
         }
-
+        /*
         private static void CreateMarkerFile()
         {
             var markerFilePath = Path.Combine(Paths.ConfigPath, TranslationZhPath, MarkerFileName);
@@ -184,6 +173,6 @@ namespace FontPatch
             {
                 Mylog.LogError($"创建标记文件失败：{ex.Message}");
             }
-        }
+        }*/
     }
 }

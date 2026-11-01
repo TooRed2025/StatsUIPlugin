@@ -6,7 +6,7 @@ using XUnity.AutoTranslator.Plugin.Core;
 
 namespace StatsUIPlugin
 {
-    [BepInPlugin("StatsUIPlugin", "汉化辅助插件", "1.1.3")]
+    [BepInPlugin("StatsUIPlugin", "汉化辅助插件", "1.1.4")]
     [BepInDependency("gravydevsupreme.xunity.autotranslator", BepInDependency.DependencyFlags.HardDependency)]
     public class StatsUIPlugin : BaseUnityPlugin
     {
@@ -26,7 +26,6 @@ namespace StatsUIPlugin
             Harmony.PatchAll();
 
             SPConfig.Init(Config);
-            SPlocal.Init();
             SPManager.DetectModdedUpgrades();
             Log.LogInfo("加载成功！");
         }
