@@ -1,10 +1,10 @@
-## ❤️模组内容 (基于 XUnity.AutoTranslator-BepInEx-5.6.1)
+## ❤️模组内容 (基于 XUnity.AutoTranslator-BepInEx-5.6.3.1)
 
 ### ‼️前言‼️ 
 
 - 热烈庆祝v0.5大更新，终于有官方中文了。以后更新应该只翻译各种模组或者修复BUG。
 
-- 精简汉化包去除字体库，如部分模组依然显示口口口口的需要到本汉化模组github里下载适配的字体库。[Github下载地址](https://github.com/TooRed2025/StatsUIPlugin/releases/tag/v0.5.001 "地址")
+- 如部分模组依然显示口口口口的需要到本汉化模组Q群或者github里下载更全面适配的字体库。[Github下载地址](https://github.com/TooRed2025/StatsUIPlugin/releases "地址")
 
 - ❌请不要和其它汉化模组混用，如果是整合包请认真清理（至少删掉整个Translation文件夹和plugins文件夹里的其他汉化文件）
 
@@ -122,6 +122,13 @@
             <li>ForgottenDelivery</li>
             <li>Unity Explorer</li>
             <li>R.E.P.O. Admin Menu</li>
+            <li>Big Friendly Button</li>
+            <li>Extraction Button Confirm</li>
+            <li>Map Vote++</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
     </li>
 </ul>
@@ -135,14 +142,13 @@
 
 - 手动下载文件，解压BepInEx文件夹到游戏根目录里(例：SteamLibrary\steamapps\common\REPO)，点击看[安装教程](https://www.bilibili.com/video/BV1A8r9BoEtv "教程")
 
-- 进群下载使用一键汉化安装程序，查看[视频教程](https://www.bilibili.com/video/BV1u5RmBDEGD/ "教程")
-
 ------------
 
 ### 📑状态栏辅助插件配置说明
 | 设置 | 默认 | 说明 |
 |---------|---------|-------------|
 | 启用翻译 | `开启` | 启用/禁用状态栏翻译功能，关闭也能看到中文，只是无法翻译更多的升级项MOD |
+| 启用替换官中 | `开启` | 替换掉官方的本体中文，使之更有趣(官中机翻就是屎) |
 | 调试模式 | `关闭` | 启用/禁用调试模式，开启后输出详细调试日志 |
 | 字体大小变更 | `开启` | 启用/禁用字体大小调整 |
 | 自动检测mod | `开启` | 自动检测额外的mod升级项，关闭时强行通过，需重启游戏 |
@@ -151,13 +157,12 @@
 | 字体最小值 | `16.0` | 字体大小下限，防止升级项过多导致文本过小无法阅读 |
 | 标题偏移值 | `7.0` | 状态栏标题文本的字体偏移值 |
 | 数字偏移 | `0.4` | 启用/禁用数字文本的偏移，调节数字文本会与文本对齐，防止与文本重叠.不必手动修改 |
-| 退出清理本地化 | `关闭` | 游戏退出时删除本地汉化文件，用于想玩原版英文REPO的玩家(?) |
-| 启用本地化 | `开启` | 替换掉官方的本体中文，使之更有趣(?) |
 
 ------------
 
 ### 😀鸣谢
 
+- bbepis
 - 各位提交BUG的群友
 
 ------------
